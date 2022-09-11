@@ -1,18 +1,136 @@
-<nav>
+<nav class="navbar">
+    <label for="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <input type="checkbox" id="hamburger">
     <ul>
+        <li><a href="/movies">Films</a></li>
         @if(auth.user)
+            {{--  <li><a href="/types">Genres</a></li>  --}}
+        @endif
+      <li>
+        <a class="title" href="/">
+          <span style="color: rgb(55, 55, 255); font-size: 1.5rem;">Adonis</span>
+          <span style="color: rgba(10, 10, 10, 0.66); font-size: 0.9rem;">Maurin Matthieu</span>
+        </a>
+      </li>
+        @if(auth.user)
+            <li><a href="/health">Health</a></li>
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
         @else
             <li><a href="{{ route('auth.login') }}">Login</a></li>
         @endif
-        
     </ul>
-</nav>
+  </nav>
+
 <style>
-a{
-    text-decoration: none;
+    a{
+        text-decoration: none;
+    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-li{
-    list-style: none;
+
+html {
+  font-family: arial, sans-serif;
+  text-transform: capitalize;
 }
+
+.container {
+  margin-top: 3rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0 1px 8px rgb(180, 180, 180);
+  user-select: none;
+}
+
+header nav > ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header nav > ul > li {
+  width: 100%;
+  padding: 1rem;
+}
+
+header nav > ul > li > a {
+  text-decoration: none;
+  color: rgba(10, 10, 10, 0.5);
+}
+
+header nav > ul > li > a:hover {
+  color: rgb(10, 10, 10);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.title > span {
+  width: max-content;
+}
+
+
+header input,
+header label {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  header nav {
+    position: relative;
+  }
+  header nav > label {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #3339;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  header label span {
+    width: 100%;
+    height: 5px;
+    background: black;
+  }
+
+  header nav > ul {
+    flex-direction: column;
+  }
+
+  .title > li:nth-child(4) {
+    order: -1;
+  }
+
+  .title > li:not(:nth-child(4)) {
+    display: none;
+  }
+
+  header nav > input:checked ~ ul > li {
+    display: block;
+  }
+}
+
 </style>

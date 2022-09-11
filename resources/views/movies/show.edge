@@ -2,20 +2,19 @@
 
 @section('content')
     <div class="container">
-    <main class="card">
-    @each(movie in movies)
+    <main class="cardShow">
         <article>
             <img src="{{movie.cover}}" alt="Image du film">
             {{--  <img src="/cover/cover.jpg" alt="Image du film">  --}}
             <div class="text">
                 <center><h4>{{movie.title}}</h4>
+                    <p class="description">{{movie.description}}</p>
                     <p class="duration"><b>Durée: </b>{{movie.duration}}</p>
-                    <p class="date" style="padding-bottom:1.5rem;">En salle le : {{movie.date.toFormat('M/d/yyyy')}}</p>
-                    <a href="movies/{{movie.id}}/show" class="showBtn">Voir les informations</a>
+                    <p class="studio"><b>Studio: </b>{{movie.studio}}</p>
+                    <p class="date" style="padding-bottom:1rem;">En salle le : {{movie.date.toFormat('M/d/yyyy')}}</p>
             </center>
             </div>
         </article>
-    @endeach
     </main>
     </div>
 
@@ -23,31 +22,24 @@
         body {
       padding: 40px 0;
     }
-
-    .showBtn{
-        padding: 1rem;
-        background-color: blue;
-        border-radius: 25px;
-        color: white;
+    
+    .cardShow {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 20px;
+        align-items: stretch;
     }
     
-    .card {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      grid-gap: 20px;
-      align-items: stretch;
-    }
-    
-    .card > article {
+    .cardShow > article {
       border: 1px solid #ccc;
       box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     }
     
-    .card > article img {
+    .cardShow > article img {
       max-width: 100%;
     }
     
-    .card .text {
+    .cardShow .text {
       padding: 20px;
     }
     </style>

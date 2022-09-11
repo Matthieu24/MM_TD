@@ -70,10 +70,12 @@ export default class MoviesController {
     
     }
     
-    public async show({ response, params }: HttpContextContract) {
+    public async show({ params, view }: HttpContextContract) {
         const movie = await Movie.find(params.id)
           
-        return response.json({movie})
+        return view.render('movies/show', {
+            movie: movie
+        })
     }
     
     public async update({auth, response, view, params }: HttpContextContract) {

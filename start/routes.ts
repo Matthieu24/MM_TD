@@ -64,12 +64,13 @@ Route.group(() => {
 //   return view.render('health')
 // })
 
-Route.get('health', async ({ response }) => {
+Route.get('health', async ({ response, view }) => {
   const report = await HealthCheck.getReport()
 
-  return report.healthy
-    ? response.ok(report)
-    : response.badRequest(report)
+  console.log(report.healthy)
+  return view.render('health', {
+    health : report.healthy 
+  }) 
 })
 
 Route.group(() => {
