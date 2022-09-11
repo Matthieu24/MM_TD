@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        @if(auth.user)
+            <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+        @else
+            <li><a href="{{ route('auth.login') }}">Login</a></li>
+        @endif
+        
+    </ul>
+</nav>
+<style>
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+</style>

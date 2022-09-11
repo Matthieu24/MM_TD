@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modification | Genre</title>
+</head>
+<body>
+    <form action="/types/{{type.id}}/save" method="POST">
+        
+        <label for="label"> Nom</label>
+        <input type="text" name="label" value="{{type.label}}" id="label">
+        
+        <input type="submit" value="Mettre à jour" id="submit">
+    </form>
+</body>
+</html>
